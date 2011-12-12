@@ -1,0 +1,51 @@
+* Implement common bus for configuration parameter sharing [Done]
+   * Move configuration name strings to macro definitions
+* GTK based messaging
+* Decoder abstraction [Done]
+* Packet Analyzer abstraction
+* Decoders
+   * Ethernet [Done]
+   * ARP [Done]
+   * IP [Done]
+   * ICMP
+   * UDP
+   * TCP
+* Configuration Subsystem
+   I want configurations like this:
+
+   [arp]
+      max_table_size = 1024   ; Maximum arp table size
+
+   [email-sniffer]
+      dump_dir = ~/tmp/
+
+   This should be parsed and a tree like this to be created:
+
+                   root
+                    |
+          -------------------------------------------
+          |         |            |                  |
+         (arp)    (...)    (email-sniffer)        (nil)
+          |                      |
+    -----------             -------------
+    |         |             |           |
+   (max_..)  (nil)       (dump_dir..)  (nil)
+
+   APIs:
+
+   conf_get_opt("root.arp.max_table_size", &val);
+
+* Analyzers
+   * ARP Poisoner Detection
+
+* How to implement the module loader?
+* How to design a scalable and extensible decoding mechanism?
+* Pcap style filter
+* UI list disply on help
+
+= BUGS =
+
+* Crash when -i <dev> is not set from command line, ie. dev = NULL in packet.c
+   (Test: Linux monsterbox 2.6.24-16-generic #1 SMP)
+
+
