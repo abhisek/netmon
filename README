@@ -1,10 +1,7 @@
 What is it
 ==========
 
-Netmon - The new HIPS wannabe is a wannabe application initially
-written for personal safety and to prevent self from l33t people around
-performing MiTM and other network traffic redirection attacks, or at least get
-notified when such attacks are going on.
+Experiment for packet fun.
 
 Architecture
 ============
